@@ -5,7 +5,6 @@ import (
 	"encoding/binary"
 	"encoding/hex"
 	"fmt"
-	"io/ioutil"
 	"net"
 	"net/http"
 	"strings"
@@ -34,12 +33,6 @@ func Logout() (result string, err error) {
 		return
 	}
 	return read_response_body(resp)
-}
-
-func read_response_body(resp *http.Response) (result string, err error) {
-	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
-	return string(body), err
 }
 
 func do_login(username string, epwd string) (result string, err error) {

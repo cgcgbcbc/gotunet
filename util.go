@@ -2,9 +2,17 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"net"
+	"net/http"
 	"strings"
 )
+
+func read_response_body(resp *http.Response) (result string, err error) {
+	defer resp.Body.Close()
+	body, err := ioutil.ReadAll(resp.Body)
+	return string(body), err
+}
 
 func getMacAddress() (mac string, err error) {
 	addrs, err := net.InterfaceAddrs()

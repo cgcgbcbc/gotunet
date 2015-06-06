@@ -21,5 +21,11 @@ func main() {
 		if err != nil {
 			fmt.Println(err)
 		}
+	} else if command == "status" {
+		result, err := CheckOnline()
+		fmt.Println(result)
+		if err != nil {
+			fmt.Println(err)
+		}
 	}
 }
