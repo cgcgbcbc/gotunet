@@ -8,7 +8,7 @@ import (
 	"io/ioutil"
 	"net"
 	"net/http"
-	"net/url"
+	"strings"
 )
 
 func Encode(v1 int8, password string, challenge []byte) (result string) {
@@ -43,8 +43,14 @@ func read_response_body(resp *http.Response) (result string, err error) {
 }
 
 func do_login(username string, epwd string) (result string, err error) {
-	resp, err := http.PostForm("http://166.111.8.120:3333/cgi-bin/do_login",
-		url.Values{"username": {username}, "type": {"2"}, "password": {epwd}, "chap": {"1"}})
+	mac, err := getMacAddress()
+	if err != nil {
+		return
+	}
+	url := "http://166.111.8.120:3333/cgi-bin/do_login"
+	data := fmt.Sprintf("username=%s&type=2&password=%s&chap=1&mac=%s", username, epwd, mac)
+	resp, err := http.Post(url, "application/x-www-form-urlencoded",
+		strings.NewReader(data))
 	if err != nil {
 		return
 	}
