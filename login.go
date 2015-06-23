@@ -65,11 +65,10 @@ func get_salt(username string) (user_id int8, challenge []byte, err error) {
 		return
 	}
 	conn, err := net.DialUDP("udp", nil, raddr)
+	defer conn.Close()
 	if err != nil {
 		return
 	}
-
-	defer conn.Close()
 
 	msg := make(chan string)
 	e := make(chan error)
