@@ -40,5 +40,12 @@ func main() {
 		if err != nil {
 			fmt.Println(err)
 		}
+	} else if command == "build" {
+		username = os.Args[2]
+		password = os.Args[3]
+		err := Build(username, password)
+		if err != nil {
+			fmt.Println(err)
+		}
 	}
 }
