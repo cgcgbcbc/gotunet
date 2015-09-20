@@ -10,3 +10,10 @@ func TestEncode(t *testing.T) {
 		t.Errorf("fail, expect %s, get %s", "f6a754391044d163a1021956ffadd15c", result)
 	}
 }
+
+func TestGetSalt(t *testing.T) {
+    _, _, err := get_salt("chenguan14")
+    if err != nil {
+        t.Error(err)
+    }
+}

@@ -40,7 +40,7 @@ func do_login(username string, epwd string) (result string, err error) {
 	if err != nil {
 		return
 	}
-    url := "http://166.111.204.120:3333/cgi-bin/do_login"
+    url := "http://166.111.204.120:69/cgi-bin/srun_portal"
 	resp, err := http.PostForm(url,
     urlutil.Values{
         "action":{"login"},
