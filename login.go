@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"net"
 	"net/http"
-	"strings"
+    urlutil "net/url"
 )
 
 func Encode(v1 int8, password string, challenge []byte) (result string) {
@@ -40,10 +40,20 @@ func do_login(username string, epwd string) (result string, err error) {
 	if err != nil {
 		return
 	}
-    url := "http://166.111.204.120:69/cgi-bin/srun_portal"
-	data := fmt.Sprintf("action=login&username=%s&drop=0&pop=0&type=2&n=117&mbytes=0&minutes=0&ac_id=1&password=%s&chap=1&mac=%s", username, epwd, mac)
-	resp, err := http.Post(url, "application/x-www-form-urlencoded",
-		strings.NewReader(data))
+    url := "http://166.111.204.120:3333/cgi-bin/do_login"
+	resp, err := http.PostForm(url,
+    urlutil.Values{
+        "action":{"login"},
+        "username":{username},
+        "password":{epwd},
+        "chap":{"1"},
+        "mac":{mac},
+        "drop":{"0"},
+        "type":{"5"},
+        "n":{"117"},
+        "ac_id":{"1"},
+    },
+    )
 	if err != nil {
 		return
 	}
