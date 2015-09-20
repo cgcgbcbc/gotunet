@@ -22,7 +22,7 @@ func main() {
 			fmt.Println(err)
 		}
 	} else if command == "status" {
-		result, err := CheckOnline()
+		result, err := GetStatus()
 		fmt.Println(result)
 		if err != nil {
 			fmt.Println(err)
