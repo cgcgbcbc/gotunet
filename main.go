@@ -27,5 +27,12 @@ func main() {
 		if err != nil {
 			fmt.Println(err)
 		}
-	}
+    } else if command == "keep" {
+        username := os.Args[2]
+        password := os.Args[3]
+        err := Keep(username, password)
+        if err != nil {
+            fmt.Println(err)
+        }
+    }
 }
