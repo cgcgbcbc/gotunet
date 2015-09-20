@@ -16,9 +16,15 @@ func Keep(username string, password string) (err error) {
         if err != nil {
             log.Println(err)
         }
-        log.Printf("status: %s", status)
+        log.Printf("status: %s\n", status)
         if err != nil || status == not_online {
-            Login(username, password)
+            log.Println("try login")
+            result, err := Login(username, password)
+            log.Printf("login result: %s\n", result)
+            if err != nil {
+                log.Println("login failed, retry after a while")
+                log.Println(err)
+            }
         }
         time.Sleep(round)
     }
