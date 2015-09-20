@@ -28,7 +28,7 @@ func Login(username string, password string) (result string, err error) {
 }
 
 func Logout() (result string, err error) {
-	resp, err := http.PostForm("http://166.111.8.120:3333/cgi-bin/do_logout", nil)
+    resp, err := http.PostForm("https://net.tsinghua.edu.cn/do_login.php", urlutil.Values{"action":{"logout"}})
 	if err != nil {
 		return
 	}
