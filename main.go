@@ -6,10 +6,10 @@ import (
 )
 
 func main() {
+	username := USERNAME
+	password := PASSWORD
 	command := os.Args[1]
 	if command == "login" {
-		username := USERNAME
-		password := PASSWORD
 		if username == "" || password == "" {
 			username = os.Args[2]
 			password = os.Args[3]
@@ -32,8 +32,10 @@ func main() {
 			fmt.Println(err)
 		}
 	} else if command == "keep" {
-		username := os.Args[2]
-		password := os.Args[3]
+		if username == "" || password == "" {
+			username = os.Args[2]
+			password = os.Args[3]
+		}
 		err := Keep(username, password)
 		if err != nil {
 			fmt.Println(err)
