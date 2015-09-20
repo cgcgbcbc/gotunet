@@ -74,7 +74,7 @@ func get_salt(username string) (user_id int8, challenge []byte, err error) {
 	e := make(chan error)
 
 	go func() {
-		var buf [48]byte
+		var buf [64]byte
 		for {
 			_, err = conn.Read(buf[0:])
 			msg <- string(buf[0:])
