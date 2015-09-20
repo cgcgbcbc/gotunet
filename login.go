@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"net"
 	"net/http"
-    urlutil "net/url"
+	urlutil "net/url"
 )
 
 func Encode(v1 int8, password string, challenge []byte) (result string) {
@@ -28,7 +28,7 @@ func Login(username string, password string) (result string, err error) {
 }
 
 func Logout() (result string, err error) {
-    resp, err := http.PostForm("https://net.tsinghua.edu.cn/do_login.php", urlutil.Values{"action":{"logout"}})
+	resp, err := http.PostForm("https://net.tsinghua.edu.cn/do_login.php", urlutil.Values{"action": {"logout"}})
 	if err != nil {
 		return
 	}
@@ -40,20 +40,20 @@ func do_login(username string, epwd string) (result string, err error) {
 	if err != nil {
 		return
 	}
-    url := "http://166.111.204.120:69/cgi-bin/srun_portal"
+	url := "http://166.111.204.120:69/cgi-bin/srun_portal"
 	resp, err := http.PostForm(url,
-    urlutil.Values{
-        "action":{"login"},
-        "username":{username},
-        "password":{epwd},
-        "chap":{"1"},
-        "mac":{mac},
-        "drop":{"0"},
-        "type":{"5"},
-        "n":{"117"},
-        "ac_id":{"1"},
-    },
-    )
+		urlutil.Values{
+			"action":   {"login"},
+			"username": {username},
+			"password": {epwd},
+			"chap":     {"1"},
+			"mac":      {mac},
+			"drop":     {"0"},
+			"type":     {"5"},
+			"n":        {"117"},
+			"ac_id":    {"1"},
+		},
+	)
 	if err != nil {
 		return
 	}

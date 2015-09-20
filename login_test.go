@@ -12,8 +12,8 @@ func TestEncode(t *testing.T) {
 }
 
 func TestGetSalt(t *testing.T) {
-    _, _, err := get_salt("chenguan14")
-    if err != nil {
-        t.Error(err)
-    }
+	_, _, err := get_salt("chenguan14")
+	if err != nil {
+		t.Error(err)
+	}
 }

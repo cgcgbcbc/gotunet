@@ -16,10 +16,10 @@ func CheckOnline() (result string, err error) {
 }
 
 func GetStatus() (result string, err error) {
-    url := "http://166.111.204.120:69/cgi-bin/rad_user_info"
-    resp, err := http.Get(url)
-    if err != nil {
-        return
-    }
-    return read_response_body(resp)
+	url := "http://166.111.204.120:69/cgi-bin/rad_user_info"
+	resp, err := http.Get(url)
+	if err != nil {
+		return
+	}
+	return read_response_body(resp)
 }
